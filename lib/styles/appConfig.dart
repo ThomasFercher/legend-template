@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:legend_design_core/layout/drawers/legend_drawer_info.dart';
 import 'package:legend_design_core/layout/fixed/appBar.dart/fixed_appbar.dart';
+import 'package:legend_design_core/layout/fixed/appBar.dart/fixed_appbar_colors.dart';
+import 'package:legend_design_core/layout/fixed/appBar.dart/fixed_appbar_sizing.dart';
 import 'package:legend_design_core/layout/fixed/bottomBar.dart/fixed_bottom_bar.dart';
 import 'package:legend_design_core/layout/fixed/fixed_footer.dart';
 import 'package:legend_design_core/layout/fixed/sider/siderTheme.dart';
@@ -146,6 +148,7 @@ class AppConfig {
   );
 
   static LegendColorTheme lightColorTheme = LegendColorTheme(
+    disabledColor: Colors.black,
     textContrast: Colors.cyan,
     typographyColors: LegendTypographyColors(
       baseColor: Colors.black,
@@ -202,6 +205,7 @@ class AppConfig {
     ),
   );
   static LegendColorTheme darkColorTheme = LegendColorTheme(
+    disabledColor: Colors.black,
     textContrast: Color(0xFFb3dedb),
     siderColorTheme: SiderColorTheme(
       background: Colors.teal,

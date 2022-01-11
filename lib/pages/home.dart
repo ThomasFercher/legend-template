@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     ThemeProvider theme = context.watch<ThemeProvider>();
     return LegendScaffold(
-      contentBuilder: (context) {
+      contentBuilder: (context,s) {
         return Column(
           children: [
             LegendText(
