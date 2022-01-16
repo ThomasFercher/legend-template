@@ -31,9 +31,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   legend_design_widgets:
-    path: ../Legend-Design-Widgets
+    git: https://github.com/ThomasFercher/Legend-Design-Widgets
   legend_design_core:
-    path: ../Legend-Design-Core
+    git: https://github.com/ThomasFercher/Legend-Design-Core
   legend_design_platform:
     git: https://github.com/ThomasFercher/Legend-Design-Cross
 
