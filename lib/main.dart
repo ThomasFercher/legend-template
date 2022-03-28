@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:legend_design_core/legend_design_app.dart';
+import 'package:legend_design_core/styles/theming/colors/legend_color_palette.dart';
+import 'package:legend_design_core/styles/theming/colors/legend_color_theme.dart';
 import 'package:legend_design_core/styles/theming/theme_provider.dart';
 import 'package:legend_design_core/typography/typography.dart';
 import 'styles/appConfig.dart';
@@ -16,18 +18,19 @@ void main() {
   if Color not specifed give Colors over theme ColorTheme; 
  them same  TextStyle Sizing and the Sizing Themes
 */
+
   runApp(
     LegendApp(
-      drawerRoutes: AppConfig.drawerRoutes,
       menuOptions: AppConfig.menuOptions,
       routes: AppConfig.routes,
       logo: Container(
+        child: const Placeholder(color: Colors.red,),
         width: 54,
         height: 54,
       ),
+      title: "Gasthof Kurath",
       theme: ThemeProvider(
-        darkTheme: AppConfig.darkColorTheme,
-        lightTheme: AppConfig.lightColorTheme,
+        colorTheme: LegendColorTheme(themes:[AppConfig.darkColorTheme,AppConfig.lightColorTheme,] ),
         sizingTheme: AppConfig.sizingTheme,
         themeType: LegendColorThemeType.DARK,
         typography: LegendTypography(

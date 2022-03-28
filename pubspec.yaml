@@ -31,9 +31,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   legend_design_widgets:
-    git: https://github.com/ThomasFercher/Legend-Design-Widgets
+    path: ../Legend-Design-Widgets
   legend_design_core:
-    git: https://github.com/ThomasFercher/Legend-Design-Core
+    path: ../Legend-Design-Core
   legend_design_platform:
     git: https://github.com/ThomasFercher/Legend-Design-Cross
 
@@ -59,10 +59,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  
+  assets:
+   - assets/images/gasthaus.jpg
+   - assets/images/eingang.jpg
+   - assets/images/gast.jpg
+   - assets/images/gastzimmer.jpg
+   - assets/images/gastzimmerL.jpg
+   - assets/images/disabled.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

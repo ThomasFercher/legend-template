@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:legend_design_core/styles/theming/colors/legend_color_palette.dart';
+import 'package:legend_design_core/styles/theming/colors/legend_color_theme.dart';
 import 'package:legend_design_core/styles/theming/colors/legend_colors.dart';
 
 import 'package:legend_design_core/styles/theming/theme_provider.dart';
@@ -31,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage>
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
     );
 
     border = ColorTween(
@@ -48,7 +50,6 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     ThemeProvider theme = context.watch<ThemeProvider>();
-    themeType = theme.themeType;
 
     return Container(
       child: Column(
@@ -68,8 +69,7 @@ class _SettingsPageState extends State<SettingsPage>
             children: [
               InkWell(
                 onTap: () {
-                  Provider.of<ThemeProvider>(context, listen: false)
-                      .changeColorTheme(LegendColorThemeType.DARK, context);
+                  theme.changeColorTheme(PaletteType.dark(), context);
                 },
                 child: Container(
                   margin: EdgeInsets.all(8.0),
@@ -154,8 +154,7 @@ class _SettingsPageState extends State<SettingsPage>
               ),
               InkWell(
                 onTap: () {
-                  Provider.of<ThemeProvider>(context, listen: false)
-                      .changeColorTheme(LegendColorThemeType.LIGHT, context);
+                  theme.changeColorTheme(PaletteType.light(), context);
                 },
                 child: Container(
                   margin: EdgeInsets.all(8.0),
