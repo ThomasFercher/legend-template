@@ -67,6 +67,11 @@ flutter:
    - assets/images/gastzimmer.jpg
    - assets/images/gastzimmerL.jpg
    - assets/images/disabled.jpg
+   - assets/images/essen1.jpg
+   - assets/images/essen2.jpg
+   - assets/images/essen3.jpg
+   - assets/images/essen4.jpg
+   - assets/images/essen5.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

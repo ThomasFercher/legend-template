@@ -153,11 +153,6 @@ class HomeSmall extends StatelessWidget {
                   padding: EdgeInsets.all(theme.sizing.padding[0]),
                   child: Column(
                     children: [
-                      LegendText(
-                        text: "Foto Galerie",
-                        textStyle: theme.typography.h4,
-                        textAlign: TextAlign.center,
-                      ),
                       LegendCarousel(
                         padding: EdgeInsets.all(8),
                         height: MediaQuery.of(context).size.height * 0.5,
