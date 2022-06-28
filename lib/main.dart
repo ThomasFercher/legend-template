@@ -10,10 +10,10 @@ void main() {
     LegendApp(
       routesDelegate: const RoutesTheme(),
       themeDelegate: const AppTheme(),
-      logo: Container(
-        width: 48,
+      logo: const SizedBox(
+        width: 96,
         height: 48,
-        color: Colors.red,
+        child: Placeholder(color: Colors.green),
       ),
       title: "Legend Template",
       buildSplashscreen: (context, theme) {
