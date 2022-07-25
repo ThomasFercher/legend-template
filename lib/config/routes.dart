@@ -4,9 +4,11 @@ import 'package:legend_design_core/layout/appBar.dart/layout/appbar_layout.dart'
 import 'package:legend_design_core/layout/config/appbar_layout.dart';
 import 'package:legend_design_core/layout/config/layout_config.dart';
 import 'package:legend_design_core/layout/drawers/menu_drawer.dart';
+import 'package:legend_design_core/layout/footer/fixed_footer.dart';
 import 'package:legend_design_core/layout/navigation/tabbar/legend_tabbar.dart';
 import 'package:legend_design_core/layout/scaffold/config/scaffold_config.dart';
 import 'package:legend_design_core/router/scaffold_route_info.dart';
+import 'package:legend_design_core/widgets/icons/legend_animated_icon.dart';
 import 'package:legend_design_template/content/modals/settings.dart';
 import 'package:legend_design_template/content/pages/screen1.dart';
 import 'package:legend_design_template/content/pages/screen2.dart';
@@ -16,6 +18,7 @@ import 'package:legend_router/router/routes/route_display.dart';
 
 import '../content/pages/screen3.dart';
 import '../content/pages/screen4.dart';
+import 'widgets/footer.dart';
 
 enum PageLayout {
   Header,
@@ -74,7 +77,7 @@ class RoutesTheme extends RouteInterface<PageLayout> {
             bottomBarLayout: BottomBarLayout.None,
             footerLayout: FooterLayout.Show,
             siderLayout: SiderLayout.None,
-          ),
+          )
         ],
         1,
       ),
@@ -125,6 +128,41 @@ class RoutesTheme extends RouteInterface<PageLayout> {
   }
 
   @override
+  ScaffoldConfig buildConfig(LegendTheme theme) {
+    return ScaffoldConfig(
+      builders: ScaffoldBuilders(
+        appBarActions: (c) {
+          return LegendAnimatedIcon(
+            icon: Icons.color_lens,
+            theme: LegendAnimtedIconTheme(
+              enabled: theme.colors.selection,
+              disabled: theme.colors.appBar.foreground,
+            ),
+            iconSize: theme.appBarSizing.iconSize,
+            disableShadow: true,
+            onPressed: () {
+              LegendRouter.of(c).pushGlobalModal(
+                settings: const RouteSettings(name: "/settings"),
+                useKey: true,
+              );
+            },
+          );
+        },
+        customFooter: FixedFooter(
+          builder: ((context, sizing, colors) => const Footer()),
+        ),
+        siderBuilder: (c) {
+          return Container(
+            height: 20,
+            width: 20,
+            color: theme.colors.sider.foreground,
+          );
+        },
+      ),
+    );
+  }
+
+  @override
   List<RouteInfo> buildRoutes(
     Map<PageLayout, DynamicRouteLayout> layouts,
     LegendTheme theme,
@@ -139,9 +177,9 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         page: const Screen1(),
       ),
       PageInfo(
-        name: "/screen2",
+        name: "/colors",
         config: ScaffoldRouteConfig(
-          pageName: "Screen 2",
+          pageName: "Colors",
           layout: layouts[PageLayout.Sider]!,
           whether: const ScaffoldWhether(
             showSiderMenu: true,
@@ -153,10 +191,13 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         page: const Screen2(),
       ),
       PageInfo(
-        name: "/screen3",
+        name: "/sizing",
         config: ScaffoldRouteConfig(
-          pageName: "Screen 3",
-          layout: layouts[PageLayout.Header2]!,
+          pageName: "Sizing",
+          layout: layouts[PageLayout.Sider]!,
+          whether: const ScaffoldWhether(
+            showSiderMenu: true,
+          ),
         ),
         page: const Screen3(),
       ),
@@ -204,13 +245,13 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         icon: Icons.home,
       ),
       const SimpleRouteDisplay(
-        title: "Screen 2",
-        route: "/screen2",
+        title: "Colors",
+        route: "/colors",
         icon: Icons.text_snippet,
       ),
       const SimpleRouteDisplay(
-        title: "Screen 3",
-        route: "/screen3",
+        title: "Sizing",
+        route: "/sizing",
         icon: Icons.abc_rounded,
       ),
       const TabRouteDisplay(
