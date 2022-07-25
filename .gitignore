@@ -51,6 +51,7 @@ app.*.map.json
 /macos 
 /windows
 /android
+/web
 
 # Dependency
 pubspec.lock
