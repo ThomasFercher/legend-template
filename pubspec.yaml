@@ -13,14 +13,15 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   legend_design_widgets:
-    git:
-      url: https://github.com/ThomasFercher/legend-widgets.git
+    path: ../legend_design_widgets/
   legend_design_core:
-    git: 
-      url: https://github.com/ThomasFercher/legend-core.git
+    path: ../legend_design_core/
   legend_design_platform:
     git: 
       url: https://github.com/ThomasFercher/legend-cross.git
+  legend_utils:
+    git: 
+      url: https://github.com/ThomasFercher/legend_utils
 
 dev_dependencies:
   flutter_test:

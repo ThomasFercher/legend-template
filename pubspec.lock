@@ -145,11 +145,9 @@ packages:
   legend_design_core:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: eca606b0bd99b6cb83506d9d8cfa6bd4c5f4a7d8
-      url: "https://github.com/ThomasFercher/legend-core.git"
-    source: git
+      path: "../legend_design_core"
+      relative: true
+    source: path
     version: "0.0.1"
   legend_design_platform:
     dependency: "direct main"
@@ -163,11 +161,9 @@ packages:
   legend_design_widgets:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: e73f0d87a8c6e02e5da04401607b4c0e0ad207bd
-      url: "https://github.com/ThomasFercher/legend-widgets.git"
-    source: git
+      path: "../legend_design_widgets"
+      relative: true
+    source: path
     version: "0.0.1"
   legend_router:
     dependency: transitive
@@ -179,7 +175,7 @@ packages:
     source: git
     version: "0.0.1"
   legend_utils:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "."
       ref: HEAD
