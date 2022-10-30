@@ -7,14 +7,13 @@ import 'package:legend_design_core/layout/drawers/menu_drawer.dart';
 import 'package:legend_design_core/layout/footer/fixed_footer.dart';
 import 'package:legend_design_core/layout/navigation/tabbar/legend_tabbar.dart';
 import 'package:legend_design_core/layout/scaffold/config/scaffold_config.dart';
+import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/router/scaffold_route_info.dart';
 import 'package:legend_design_core/widgets/icons/legend_animated_icon.dart';
 import 'package:legend_design_template/content/modals/settings.dart';
 import 'package:legend_design_template/content/pages/screen1.dart';
 import 'package:legend_design_template/content/pages/screen2.dart';
-import 'package:legend_router/router/legend_router.dart';
 import 'package:legend_design_core/styles/legend_theme.dart';
-import 'package:legend_router/router/routes/route_display.dart';
 
 import '../content/pages/screen3.dart';
 import '../content/pages/screen4.dart';
@@ -39,16 +38,16 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         [
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
+              AppBarLayoutConfig.none,
               AppBarLayoutType.TiMeAc,
             ),
             bottomBarLayout: BottomBarLayout.Show,
-            footerLayout: FooterLayout.None,
+            footerLayout: FooterLayout.Show,
             siderLayout: SiderLayout.None,
           ),
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
+              AppBarLayoutConfig.none,
               AppBarLayoutType.TiMeAc,
             ),
             bottomBarLayout: BottomBarLayout.None,
@@ -66,7 +65,7 @@ class RoutesTheme extends RouteInterface<PageLayout> {
               AppBarLayoutType.MeTiAc,
             ),
             bottomBarLayout: BottomBarLayout.Show,
-            footerLayout: FooterLayout.None,
+            footerLayout: FooterLayout.Show,
             siderLayout: SiderLayout.None,
           ),
           const RouteLayout(
@@ -128,10 +127,10 @@ class RoutesTheme extends RouteInterface<PageLayout> {
   }
 
   @override
-  ScaffoldConfig buildConfig(LegendTheme theme) {
+  ScaffoldConfig buildConfig() {
     return ScaffoldConfig(
       builders: ScaffoldBuilders(
-        appBarActions: (c) {
+        appBarActions: (c, theme) {
           return LegendAnimatedIcon(
             icon: Icons.color_lens,
             theme: LegendAnimtedIconTheme(
@@ -141,7 +140,7 @@ class RoutesTheme extends RouteInterface<PageLayout> {
             iconSize: theme.appBarSizing.iconSize,
             disableShadow: true,
             onPressed: () {
-              LegendRouter.of(c).pushGlobalModal(
+              ModalRouter.of(c).push(
                 settings: const RouteSettings(name: "/settings"),
                 useKey: true,
               );
@@ -151,7 +150,7 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         customFooter: FixedFooter(
           builder: ((context, sizing, colors) => const Footer()),
         ),
-        siderBuilder: (c) {
+        siderBuilder: (c, theme) {
           return Container(
             height: 20,
             width: 20,
@@ -175,6 +174,8 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           layout: layouts[PageLayout.Header]!,
         ),
         page: const Screen1(),
+        title: "Home",
+        icon: Icons.home,
       ),
       PageInfo(
         name: "/colors",
@@ -183,12 +184,15 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           layout: layouts[PageLayout.Sider]!,
           whether: const ScaffoldWhether(
             showSiderMenu: true,
+            showAppBarMenu: false,
           ),
           builders: ScaffoldBuilders(
-            siderBuilder: (context) => Container(),
+            siderBuilder: (context, theme) => Container(),
           ),
         ),
         page: const Screen2(),
+        title: "Colors",
+        icon: Icons.color_lens,
       ),
       PageInfo(
         name: "/sizing",
@@ -200,6 +204,8 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           ),
         ),
         page: const Screen3(),
+        title: "Sizing",
+        icon: Icons.layers,
       ),
       TabviewPageInfo(
         name: "/screen4",
@@ -212,10 +218,12 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           layout: layouts[PageLayout.Header]!,
         ),
         page: const Screen4(),
+        title: "Home",
         children: [
           TabviewChildPageInfo(
             name: "/screen4/test",
-            page: Container(),
+            page: const Screen4(),
+            title: "Home",
             config: ScaffoldRouteConfig(
               pageName: "Cool 1",
               layout: layouts[PageLayout.Header]!,
@@ -224,47 +232,16 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         ],
       ),
       ModalRouteInfo(
+        title: "",
         name: "/settings",
         page: const Settings(),
         width: theme.sizing.get("settingsWidth"),
       ),
       ModalRouteInfo(
+        title: "",
         name: "/menudrawer",
         page: const MenuDrawer(),
         width: theme.menuDrawerSizing.width,
-      ),
-    ];
-  }
-
-  @override
-  List<RouteDisplay> buildDisplays() {
-    return [
-      const SimpleRouteDisplay(
-        title: "Home",
-        route: "/",
-        icon: Icons.home,
-      ),
-      const SimpleRouteDisplay(
-        title: "Colors",
-        route: "/colors",
-        icon: Icons.text_snippet,
-      ),
-      const SimpleRouteDisplay(
-        title: "Sizing",
-        route: "/sizing",
-        icon: Icons.abc_rounded,
-      ),
-      const TabRouteDisplay(
-        title: "Screen 4",
-        route: "/screen4",
-        icon: Icons.yard_rounded,
-        children: [
-          SimpleRouteDisplay(
-            title: "Development",
-            route: "/screen4/test",
-            icon: Icons.yard_sharp,
-          ),
-        ],
       ),
     ];
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:legend_design_core/legend_app.dart';
+import 'package:legend_design_core/styles/typography/widgets/legend_text.dart';
 import 'package:legend_utils/urlstrategy/url_strategy.dart';
 import 'config/routes.dart';
 import 'config/theme.dart';
@@ -12,8 +13,12 @@ void main() {
     LegendApp(
       routesDelegate: const RoutesTheme(),
       themeDelegate: const AppTheme(),
-      logo: Container(
-        width: 0,
+      logo: const LegendText(
+        "Legend Template",
+        textStyle: TextStyle(
+          fontSize: 24,
+          color: Colors.indigo,
+        ),
       ),
       title: "Legend Template",
       buildSplashscreen: (context, theme) {
