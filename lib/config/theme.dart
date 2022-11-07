@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:legend_design_core/interfaces/theme_interface.dart';
 import 'package:legend_design_core/styles/colors/legend_colors.dart';
 import 'package:legend_design_core/styles/colors/subcolors/menuDrawer/menu_drawer_colors.dart';
 import 'package:legend_design_core/styles/colors/subcolors/micros/menu/menu_colors.dart';
 import 'package:legend_design_core/styles/colors/subcolors/micros/sidemenu/sidemenu_colors.dart';
+import 'package:legend_design_core/styles/colors/subcolors/micros/tabbar/tabbar_colors.dart';
 import 'package:legend_design_core/styles/colors/subcolors/sub_colors.dart';
 import 'package:legend_design_core/styles/legend_theme.dart';
 import 'package:legend_design_core/styles/sizing/core/core_sizing.dart';
@@ -12,6 +12,9 @@ import 'package:legend_design_core/styles/sizing/core/override.dart';
 import 'package:legend_design_core/styles/sizing/sub_sizing/legend_sub_sizing.dart';
 import 'package:legend_design_core/styles/sizing/sub_sizing/micros/menu/menu_sizing.dart';
 import 'package:legend_design_core/styles/sizing/sub_sizing/micros/sidemenu/sidemenu_sizing.dart';
+import 'package:legend_design_core/styles/sizing/sub_sizing/micros/tabbar/tabbar_sizing.dart';
+import 'package:legend_design_core/styles/typography/style/typography_colors.dart';
+import 'package:legend_design_core/styles/typography/style/typography_sizing.dart';
 import 'package:legend_utils/legend_utils.dart';
 
 class AppTheme extends ThemeInterface {
@@ -25,38 +28,50 @@ class AppTheme extends ThemeInterface {
           primary: Colors.indigo[900]!,
           secondary: Colors.tealAccent,
           tertiary: Colors.blueGrey,
-          foreground1: Colors.blueGrey[800]!,
-          foreground2: Colors.blueGrey[500]!,
-          foreground3: Colors.blueGrey[200]!,
-          foreground4: Colors.blueGrey[100]!,
-          foreground5: Colors.blueGrey[50]!,
-          background1: Colors.white,
-          background2: Colors.blueGrey[50]!,
-          background3: Colors.blueGrey[100]!,
-          background4: Colors.blueGrey[400]!,
+          foreground1: Colors.blueGrey[900]!,
+          foreground2: Colors.blueGrey[800]!,
+          foreground3: Colors.indigo[600]!,
+          foreground4: Colors.indigo[100]!,
+          foreground5: Colors.indigo[50]!,
+          background1: Colors.indigo[50]!,
+          background2: Colors.indigo[100]!,
+          background3: Colors.indigo[200]!,
+          background4: Colors.indigo[600]!,
           background5: Colors.blueGrey[800]!,
-          error: Colors.red[300]!,
-          disabled: LegendColors.gray5,
+          error: Colors.red[400]!,
+          disabled: LegendColors.gray7,
           selection: Colors.tealAccent[400]!,
-          onPrimary: Colors.indigo[200]!,
+          onPrimary: Colors.indigo[100]!,
           onSecondary: Colors.teal[200]!,
           onTertiary: Colors.blueGrey[200]!,
           custom: {
-            "test": Colors.red,
+            "custom": Colors.blue,
           },
           subcolors: (colors) {
             return LegendSubColors(
+              typography: TypographyColorsOverride(
+                h5: colors.foreground1,
+                h4: colors.foreground1,
+                h3: colors.foreground1,
+                h1: colors.foreground2,
+              ),
               appBar: AppBarColorsOverride(
                 background: colors.primary,
-                foreground: Colors.indigo[50],
+                foreground: colors.onPrimary,
                 buildComponents: (appBar) {
                   return AppBarColorsComponentsOverride(
                     menuColors: MenuColorsOverride(
                       foreground: appBar.foreground,
-                      activeBackground: appBar.background.lighten(0.2),
+                      menuBackground: appBar.background,
+                      background: appBar.background,
                     ),
                     subMenuColors: SideMenuColorsOverride(
                       foreground: appBar.foreground,
+                      background: appBar.background,
+                      menuBackground: appBar.background,
+                    ),
+                    tabbarColors: TabbarColorsOverride(
+                      background: colors.background1,
                     ),
                   );
                 },
@@ -64,22 +79,28 @@ class AppTheme extends ThemeInterface {
               footer: FooterColorsOverride(
                 background: colors.background5,
               ),
+              bottomBar: BottomBarColorsOverride(
+                backgroundColor: colors.background1,
+                activeColor: Colors.indigoAccent,
+                disabledColor: Colors.indigoAccent[100],
+              ),
               sider: SiderColorsOverride(
-                  background: colors.primary,
-                  foreground: colors.foreground5,
-                  selection: colors.selection,
-                  backgroundMenu: colors.primary.darken(),
-                  buildComponents: (sider) {
-                    return SiderColorsComponentsOverride(
-                      menuColors: SideMenuColorsOverride(
-                        background: colors.primary,
-                        activeForeground: sider.selection,
-                        activeBackground: colors.primary.lighten(0.1),
-                        foreground: sider.foreground,
-                        menuBackground: sider.background,
-                      ),
-                    );
-                  }),
+                background: colors.primary,
+                foreground: colors.foreground5,
+                selection: colors.selection,
+                backgroundMenu: colors.primary,
+                buildComponents: (sider) {
+                  return SiderColorsComponentsOverride(
+                    menuColors: SideMenuColorsOverride(
+                      background: colors.primary.darken(0.05),
+                      activeForeground: sider.selection,
+                      activeBackground: colors.primary.darken(0.1),
+                      foreground: sider.foreground,
+                      menuBackground: sider.background,
+                    ),
+                  );
+                },
+              ),
               menuDrawer: MenuDrawerColorsOverride(
                 background: Colors.white,
                 backgroundMenu: colors.onPrimary,
@@ -105,30 +126,97 @@ class AppTheme extends ThemeInterface {
           primary: Colors.indigo[900]!,
           secondary: Colors.tealAccent,
           tertiary: Colors.blueGrey,
-          foreground1: LegendColors.gray8,
-          foreground2: LegendColors.gray9,
-          foreground3: LegendColors.gray10,
-          foreground4: LegendColors.gray11,
-          foreground5: LegendColors.gray12,
-          background1: LegendColors.gray11,
-          background2: LegendColors.gray8,
-          background3: LegendColors.gray5,
-          background4: LegendColors.gray4,
-          background5: LegendColors.gray2,
-          error: Colors.red,
-          disabled: LegendColors.gray7,
+          foreground1: Colors.white,
+          foreground2: Colors.blueGrey[50]!,
+          foreground3: Colors.blueGrey[50]!,
+          foreground4: Colors.blueGrey[50]!,
+          foreground5: Colors.blueGrey[100]!,
+          background1: Colors.grey[850]!,
+          background2: Colors.grey[800]!,
+          background3: Colors.grey[700]!,
+          background4: Colors.grey[600]!,
+          background5: Colors.grey[500]!,
+          error: Colors.red[400]!,
+          disabled: LegendColors.gray2,
           selection: Colors.tealAccent[400]!,
-          onPrimary: Colors.indigo[200]!,
+          onPrimary: Colors.indigo[50]!,
           onSecondary: Colors.teal[200]!,
-          onTertiary: Colors.teal[200]!,
+          onTertiary: Colors.blueGrey[200]!,
           custom: {
-            "test": Colors.red,
+            "custom": Colors.blue,
           },
           subcolors: (colors) {
             return LegendSubColors(
+              typography: TypographyColorsOverride(
+                h5: colors.foreground1,
+                h4: colors.foreground1,
+                h3: colors.foreground1,
+                h1: colors.foreground2,
+              ),
               appBar: AppBarColorsOverride(
-                background: Colors.red,
-                foreground: Colors.indigo[50],
+                background: colors.primary,
+                foreground: colors.onPrimary,
+                buildComponents: (appBar) {
+                  return AppBarColorsComponentsOverride(
+                    menuColors: MenuColorsOverride(
+                      foreground: appBar.foreground,
+                      //   activeBackground: appBar.foreground,
+                      menuBackground: appBar.background,
+                      background: appBar.background,
+                    ),
+                    subMenuColors: SideMenuColorsOverride(
+                      foreground: appBar.foreground,
+                      background: appBar.background,
+                      menuBackground: appBar.background,
+                    ),
+                    tabbarColors: TabbarColorsOverride(
+                      background: colors.primary,
+                    ),
+                  );
+                },
+              ),
+              footer: FooterColorsOverride(
+                background: colors.background1,
+              ),
+              bottomBar: BottomBarColorsOverride(
+                backgroundColor: colors.background1,
+                activeColor: Colors.indigoAccent,
+                disabledColor: Colors.indigoAccent[100],
+              ),
+              sider: SiderColorsOverride(
+                background: colors.primary,
+                foreground: colors.onPrimary,
+                selection: colors.selection,
+                backgroundMenu: colors.primary,
+                buildComponents: (sider) {
+                  return SiderColorsComponentsOverride(
+                    menuColors: SideMenuColorsOverride(
+                      background: colors.primary.darken(0.05),
+                      activeForeground: sider.selection,
+                      activeBackground: colors.primary.darken(0.1),
+                      foreground: sider.foreground,
+                      menuBackground: sider.background,
+                    ),
+                  );
+                },
+              ),
+              menuDrawer: MenuDrawerColorsOverride(
+                background: colors.background1,
+                backgroundMenu: colors.onPrimary,
+                foreground: colors.foreground1,
+                background_selection: colors.primary,
+                background_menu_selection: colors.primary,
+                buildComponents: (menu) {
+                  return MenuDrawerColorsComponentsOverride(
+                    menuColors: SideMenuColorsOverride(
+                      menuBackground: menu.background,
+                      activeBackground: colors.primary,
+                      activeForeground: colors.selection,
+                      background: colors.background2,
+                      foreground: colors.foreground2,
+                    ),
+                  );
+                },
               ),
             );
           },
@@ -142,13 +230,13 @@ class AppTheme extends ThemeInterface {
     return LegendSizingTheme(
       defaultSizing: LegendSizing(
         custom: {
-          'settingsWidth': 200,
+          'settingsWidth': 280,
         },
         key: 720,
         elevation1: 0,
-        elevation2: 1,
-        elevation3: 2,
-        elevation4: 4,
+        elevation2: 2,
+        elevation3: 4,
+        elevation4: 8,
         iconSize1: 16,
         iconSize2: 24,
         iconSize3: 28,
@@ -161,9 +249,16 @@ class AppTheme extends ThemeInterface {
         spacing2: 24,
         spacing3: 36,
         spacing4: 48,
-        typographySizing: TypographySizing(baseSize: 14, maxSize: 42),
         subSizing: (LegendCoreSizing sizing) {
           return LegendSubSizing(
+            typographySizing: TypographySizingStyle(
+              h0: 12,
+              h1: 14,
+              h2: 18,
+              h3: 24,
+              h4: 28,
+              h5: 32,
+            ),
             footerSizing: FooterSizingStyle(
               height: 80,
               maxWidth: 1000,
@@ -172,33 +267,34 @@ class AppTheme extends ThemeInterface {
             siderSizing: SiderSizingStyle(
               width: 200,
               iconSize: 18,
-              itemHeight: 48,
               spacing: 8,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 32),
-              subMenuHeaderHeight: 48,
-              subItemPadding: const EdgeInsets.symmetric(horizontal: 16),
-              horizontalPadding: 8,
+              padding: const EdgeInsets.only(
+                top: 16,
+                left: 8,
+                right: 8,
+                bottom: 8,
+              ),
               buildComponents: (sider) {
                 return SiderSizingComponents(
                   sideMenuSizing: SideMenuSizingStyle(
-                    spacing: sider.iconSize,
+                    spacing: 8,
                     borderRadius: sizing.radius1.asRadius(),
                     iconSize: sizing.iconSize2,
-                    itemHeight: sider.itemHeight,
-                    padding: sider.itemPadding,
+                    itemHeight: 48,
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
                   ),
                 );
               },
             ),
             appBarSizing: AppBarSizingStyle(
-              appBarHeight: 64,
+              appBarHeight: 80,
               contentPadding: const EdgeInsets.only(
                 right: 12,
                 left: 16,
               ),
               iconSize: 22,
               spacing: 4,
-              logoSize: 48,
+              logoSize: 64,
               buildComponents: (AppBarSizingInfo appBar) {
                 return AppBarSizingComponents(
                   menuSizing: MenuSizingStyle(
@@ -219,6 +315,10 @@ class AppTheme extends ThemeInterface {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 21,
                     ),
+                  ),
+                  tabbarSizing: TabbarSizingStyle(
+                    height: 56,
+                    alignment: MainAxisAlignment.start,
                   ),
                 );
               },
@@ -255,9 +355,9 @@ class AppTheme extends ThemeInterface {
               height: 80,
               itemWidth: 72,
               margin: EdgeInsets.zero,
-              itemPadding: EdgeInsets.all(0),
-              padding: EdgeInsets.symmetric(vertical: 6),
-              decoration: BoxDecoration(
+              itemPadding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              decoration: const BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
@@ -277,17 +377,64 @@ class AppTheme extends ThemeInterface {
       overrides: [
         LegendSizingOverride(
           key: 480,
+          spacing1: 16,
+          spacing2: 12,
+          spacing3: 10,
+          spacing4: 8,
+          subSizing: (sizing) {
+            return LegendSubSizingOverride(
+              typographySizing: TypographySizingOverride(
+                h0: 10,
+                h1: 12,
+                h2: 16,
+                h3: 20,
+                h4: 26,
+                h5: 32,
+              ),
+              appBarSizing: AppBarSizingOverride(
+                spacing: 24,
+                iconSize: 24,
+                appBarHeight: 64,
+                logoSize: 48,
+                buildComponents: (sizing) => AppBarSizingComponentsOverride(
+                  tabbarSizing: TabbarSizingOverride(
+                    height: 48,
+                    alignment: MainAxisAlignment.start,
+                  ),
+                ),
+              ),
+              bottomBarSizing: BottomBarSizingOverride(
+                iconSize: 22,
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                height: 72,
+              ),
+              menuDrawerSizing: MenuDrawerSizingOverride(
+                iconSize: 40,
+                itemHeight: 64,
+                width: 240,
+              ),
+            );
+          },
         ),
         LegendSizingOverride(
           key: 720,
           subSizing: (sizing) {
             return LegendSubSizingOverride(
+              appBarSizing: AppBarSizingOverride(
+                appBarHeight: 64,
+                logoSize: 48,
+              ),
+              typographySizing: TypographySizingOverride(
+                h0: 12,
+                h1: 14,
+              ),
               siderSizing: SiderSizingOverride(
-                width: 220,
+                width: 200,
                 buildComponents: (sizing) {
                   return SiderSizingComponentsOverride(
                     sideMenuSizing: SideMenuSizingOverride(
                       iconSize: 12,
+                      spacing: 4,
                     ),
                   );
                 },
@@ -299,6 +446,10 @@ class AppTheme extends ThemeInterface {
           key: 1080,
           subSizing: (sizing) {
             return LegendSubSizingOverride(
+              typographySizing: TypographySizingOverride(
+                h0: 13,
+                h1: 15,
+              ),
               siderSizing: SiderSizingOverride(
                 width: 220,
               ),
@@ -318,6 +469,10 @@ class AppTheme extends ThemeInterface {
           key: 1600,
           subSizing: (sizing) {
             return LegendSubSizingOverride(
+              typographySizing: TypographySizingOverride(
+                h0: 14,
+                h1: 16,
+              ),
               siderSizing: SiderSizingOverride(
                 width: 240,
               ),
@@ -330,9 +485,13 @@ class AppTheme extends ThemeInterface {
 
   @override
   LegendTypography buildTypography() {
-    return LegendTypography(
-      //   base: GoogleFonts.nunito(),
-      h6: GoogleFonts.lobsterTwo(),
+    return const LegendTypography(
+      h0: TextStyle(),
+      h1: TextStyle(),
+      h2: TextStyle(),
+      h3: TextStyle(),
+      h4: TextStyle(),
+      h5: TextStyle(),
     );
   }
 }
