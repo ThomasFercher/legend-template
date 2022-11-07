@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -24,8 +24,7 @@ dependencies:
   legend_utils:
     git: 
       url: https://github.com/ThomasFercher/legend_utils
-  google_maps_flutter: ^2.1.9
-  geolocator: ^9.0.1
+
 
 
 dev_dependencies:
@@ -38,5 +37,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+
 
 

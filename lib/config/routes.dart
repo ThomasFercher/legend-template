@@ -5,41 +5,40 @@ import 'package:legend_design_core/layout/config/appbar_layout.dart';
 import 'package:legend_design_core/layout/config/layout_config.dart';
 import 'package:legend_design_core/layout/drawers/menu_drawer.dart';
 import 'package:legend_design_core/layout/footer/fixed_footer.dart';
-import 'package:legend_design_core/layout/navigation/tabbar/legend_tabbar.dart';
 import 'package:legend_design_core/layout/scaffold/config/scaffold_config.dart';
 import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/router/scaffold_route_info.dart';
+import 'package:legend_design_core/widgets/elevation/elevated_card.dart';
 import 'package:legend_design_core/widgets/icons/legend_animated_icon.dart';
 import 'package:legend_design_template/content/modals/settings.dart';
 import 'package:legend_design_template/content/pages/screen1.dart';
 import 'package:legend_design_template/content/pages/screen2.dart';
-import 'package:legend_design_core/styles/legend_theme.dart';
+import 'package:legend_design_template/content/pages/screen5.dart';
 
 import '../content/pages/screen3.dart';
 import '../content/pages/screen4.dart';
 import 'widgets/footer.dart';
 
 enum PageLayout {
-  Header,
-  Header2,
-  HeaderSider,
-  Sider,
+  header,
+  headerTabbar,
+  headerSider,
+  sider,
 }
 
 class RoutesTheme extends RouteInterface<PageLayout> {
   const RoutesTheme() : super();
 
   @override
-  Map<PageLayout, DynamicRouteLayout> buildLayouts(LegendTheme theme) {
-    List<double> splits = theme.splits;
+  Map<PageLayout, DynamicRouteLayout> buildLayouts(List<double> splits) {
     return {
-      PageLayout.Header: DynamicRouteLayout.firstExpand(
+      PageLayout.header: DynamicRouteLayout.firstExpand(
         splits,
         [
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.none,
-              AppBarLayoutType.TiMeAc,
+              layout: AppBarLayoutConfig.fixedAbove,
+              aligment: AppBarLayoutType.TiMeAc,
             ),
             bottomBarLayout: BottomBarLayout.Show,
             footerLayout: FooterLayout.Show,
@@ -47,8 +46,8 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           ),
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.none,
-              AppBarLayoutType.TiMeAc,
+              layout: AppBarLayoutConfig.fixedAbove,
+              aligment: AppBarLayoutType.TiMeAc,
             ),
             bottomBarLayout: BottomBarLayout.None,
             footerLayout: FooterLayout.Show,
@@ -56,13 +55,14 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           ),
         ],
       ),
-      PageLayout.Header2: DynamicRouteLayout.expandAfter(
+      PageLayout.headerTabbar: DynamicRouteLayout.expandAfter(
         splits,
         [
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
-              AppBarLayoutType.MeTiAc,
+              layout: AppBarLayoutConfig.fixedAbove,
+              aligment: AppBarLayoutType.MeTiAc,
+              showTabbar: true,
             ),
             bottomBarLayout: BottomBarLayout.Show,
             footerLayout: FooterLayout.Show,
@@ -70,8 +70,9 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           ),
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
-              AppBarLayoutType.TiMeAc,
+              layout: AppBarLayoutConfig.fixedAbove,
+              aligment: AppBarLayoutType.TiMeAc,
+              showTabbar: true,
             ),
             bottomBarLayout: BottomBarLayout.None,
             footerLayout: FooterLayout.Show,
@@ -80,36 +81,13 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         ],
         1,
       ),
-      PageLayout.HeaderSider: DynamicRouteLayout.firstExpand(
+      PageLayout.sider: DynamicRouteLayout.firstExpand(
         splits,
         [
           const RouteLayout(
             appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
-              AppBarLayoutType.TiMeAc,
-            ),
-            bottomBarLayout: BottomBarLayout.Show,
-            footerLayout: FooterLayout.None,
-            siderLayout: SiderLayout.None,
-          ),
-          const RouteLayout(
-            appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
-              AppBarLayoutType.TiMeAc,
-            ),
-            bottomBarLayout: BottomBarLayout.None,
-            footerLayout: FooterLayout.Show,
-            siderLayout: SiderLayout.Left,
-          ),
-        ],
-      ),
-      PageLayout.Sider: DynamicRouteLayout.firstExpand(
-        splits,
-        [
-          const RouteLayout(
-            appBarLayout: AppBarLayout(
-              AppBarLayoutConfig.fixedAbove,
-              AppBarLayoutType.TiMeAc,
+              layout: AppBarLayoutConfig.fixedAbove,
+              aligment: AppBarLayoutType.TiMeAc,
             ),
             bottomBarLayout: BottomBarLayout.Show,
             footerLayout: FooterLayout.None,
@@ -129,6 +107,10 @@ class RoutesTheme extends RouteInterface<PageLayout> {
   @override
   ScaffoldConfig buildConfig() {
     return ScaffoldConfig(
+      whether: const ScaffoldWhether(
+        showBackButton: false,
+        showSiderMenu: true,
+      ),
       builders: ScaffoldBuilders(
         appBarActions: (c, theme) {
           return LegendAnimatedIcon(
@@ -151,10 +133,39 @@ class RoutesTheme extends RouteInterface<PageLayout> {
           builder: ((context, sizing, colors) => const Footer()),
         ),
         siderBuilder: (c, theme) {
-          return Container(
-            height: 20,
-            width: 20,
-            color: theme.colors.sider.foreground,
+          return Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Divider(
+                height: 16,
+                color: theme.siderColors.foreground,
+              ),
+              ElevatedCard(
+                elevation: 1,
+                background: theme.colors.onPrimary,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
+                borderRadius: BorderRadius.circular(10),
+                child: LegendAnimatedIcon(
+                  icon: Icons.color_lens,
+                  theme: LegendAnimtedIconTheme(
+                    enabled: theme.colors.selection,
+                    disabled: theme.colors.sider.background,
+                  ),
+                  iconSize: theme.sizing.iconSize2,
+                  disableShadow: true,
+                  onPressed: () {
+                    ModalRouter.of(c).push(
+                      settings: const RouteSettings(name: "/settings"),
+                      useKey: true,
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
@@ -164,14 +175,13 @@ class RoutesTheme extends RouteInterface<PageLayout> {
   @override
   List<RouteInfo> buildRoutes(
     Map<PageLayout, DynamicRouteLayout> layouts,
-    LegendTheme theme,
   ) {
     return [
       PageInfo(
         name: "/",
         config: ScaffoldRouteConfig(
           pageName: "Screen 1",
-          layout: layouts[PageLayout.Header]!,
+          layout: layouts[PageLayout.header]!,
         ),
         page: const Screen1(),
         title: "Home",
@@ -181,13 +191,10 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         name: "/colors",
         config: ScaffoldRouteConfig(
           pageName: "Colors",
-          layout: layouts[PageLayout.Sider]!,
+          layout: layouts[PageLayout.sider]!,
           whether: const ScaffoldWhether(
             showSiderMenu: true,
             showAppBarMenu: false,
-          ),
-          builders: ScaffoldBuilders(
-            siderBuilder: (context, theme) => Container(),
           ),
         ),
         page: const Screen2(),
@@ -198,50 +205,47 @@ class RoutesTheme extends RouteInterface<PageLayout> {
         name: "/sizing",
         config: ScaffoldRouteConfig(
           pageName: "Sizing",
-          layout: layouts[PageLayout.Sider]!,
+          layout: layouts[PageLayout.sider]!,
           whether: const ScaffoldWhether(
             showSiderMenu: true,
+            showSiderSubMenu: true,
           ),
         ),
         page: const Screen3(),
         title: "Sizing",
         icon: Icons.layers,
       ),
-      TabviewPageInfo(
+      PageInfo(
         name: "/screen4",
-        style: TabBarStyle(
-            background: theme.colors.background1,
-            height: 48,
-            alignment: MainAxisAlignment.center),
+        icon: Icons.menu_book_rounded,
         config: ScaffoldRouteConfig(
           pageName: "Screen 4",
-          layout: layouts[PageLayout.Header]!,
+          layout: layouts[PageLayout.headerTabbar]!,
         ),
         page: const Screen4(),
-        title: "Home",
+        title: "Example",
         children: [
-          TabviewChildPageInfo(
+          PageInfo(
             name: "/screen4/test",
-            page: const Screen4(),
-            title: "Home",
+            page: const Screen5(),
+            icon: Icons.textsms,
+            title: "Tabbar Page",
             config: ScaffoldRouteConfig(
               pageName: "Cool 1",
-              layout: layouts[PageLayout.Header]!,
+              layout: layouts[PageLayout.headerTabbar]!,
             ),
           ),
         ],
       ),
-      ModalRouteInfo(
+      const ModalRouteInfo(
         title: "",
         name: "/settings",
-        page: const Settings(),
-        width: theme.sizing.get("settingsWidth"),
+        page: Settings(),
       ),
-      ModalRouteInfo(
+      const ModalRouteInfo(
         title: "",
         name: "/menudrawer",
-        page: const MenuDrawer(),
-        width: theme.menuDrawerSizing.width,
+        page: MenuDrawer(),
       ),
     ];
   }
