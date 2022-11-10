@@ -1,16 +1,26 @@
 # legend_design_template
 
-A new Flutter project.
+This Template is the starting point for your Application using the Legend Design ecosystem. For a more in depth guide / documentation please head
+to Legend Design.
 
-## Getting Started
+## Configuration
 
-This project is a starting point for a Flutter application.
+### Color Theming
 
-A few resources to get you started if this is your first Flutter project:
+### Sizing 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Routing
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Libraries
+
+### Legend Router
+
+### Legend Widgets
+
+### Legend Utils
+
+### Legend Cross
+
+## Layout
+
+### Best Practices
