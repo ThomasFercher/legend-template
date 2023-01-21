@@ -13,7 +13,7 @@ class Screen5 extends StatelessWidget {
       children: [
         LegendText(
           "Example Screen with Tabbar",
-          textStyle: theme.typography.h2,
+          style: theme.typography.h2,
         ),
       ],
     );

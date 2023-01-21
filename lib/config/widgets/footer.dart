@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/styles/legend_theme.dart';
 import 'package:legend_design_core/styles/typography/widgets/legend_text.dart';
 
@@ -12,7 +11,7 @@ class Footer extends StatelessWidget {
     return Center(
       child: LegendText(
         "Legend Design",
-        textStyle: theme.typography.h4.copyWith(
+        style: theme.typography.h4.copyWith(
           color: theme.footerColors.foreground,
         ),
       ),

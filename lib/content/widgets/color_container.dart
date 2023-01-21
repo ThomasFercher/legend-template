@@ -32,7 +32,7 @@ class ColorContainer extends LegendWidget {
         child: Center(
           child: LegendText(
             title,
-            textStyle: theme.typography.h2.copyWith(
+            style: theme.typography.h2.copyWith(
               color: color.getTextColor(
                 light: Colors.white,
                 dark: Colors.black.withOpacity(0.8),

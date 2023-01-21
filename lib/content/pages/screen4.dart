@@ -13,7 +13,7 @@ class Screen4 extends StatelessWidget {
         LegendTheme theme = LegendTheme.of(context);
         return LegendText(
           "Example Screen with Tabbar",
-          textStyle: theme.typography.h2,
+          style: theme.typography.h2,
         );
       },
     );
