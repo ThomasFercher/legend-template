@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/state/legend_state.dart';
 import 'package:legend_design_core/styles/legend_theme.dart';
 import 'package:legend_design_core/styles/theme_provider.dart';
 import 'package:legend_design_core/styles/typography/widgets/legend_text.dart';
 import 'package:legend_design_core/widgets/elevation/animated_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../main.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -73,6 +74,10 @@ class _ThemeSelectorState extends State<ThemeSelector> {
               context
                   .read<ThemeProvider>()
                   .changeColorTheme(PaletteType.dark());
+
+              SharedPreferences.getInstance().then(
+                (pref) => pref.setString(colorThemeKey, darkKey),
+              );
             },
             padding: EdgeInsets.zero,
             child: Container(
@@ -99,6 +104,9 @@ class _ThemeSelectorState extends State<ThemeSelector> {
               context
                   .read<ThemeProvider>()
                   .changeColorTheme(PaletteType.light());
+              SharedPreferences.getInstance().then(
+                (pref) => pref.setString(colorThemeKey, lightKey),
+              );
             },
             padding: EdgeInsets.zero,
             child: Container(

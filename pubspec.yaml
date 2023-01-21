@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.17
   legend_design_widgets:
     git:
       url: https://github.com/ThomasFercher/legend-widgets
