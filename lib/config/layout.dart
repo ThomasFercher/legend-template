@@ -11,8 +11,8 @@ import 'package:legend_design_core/layout/config/dynamic_route_layout.dart';
 import 'package:legend_design_core/layout/sider/sider_layout.dart';
 import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/widgets/icons/legend_animated_icon.dart';
-import 'package:legend_design_template/config/widgets/footer.dart';
-import 'package:legend_design_widgets/input/button/legendButton/legend_button.dart';
+
+import 'widgets/footer.dart';
 
 enum PageLayout {
   header,

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:legend_design_core/interfaces/legend_config.dart';
 import 'package:legend_design_core/legend_app.dart';
 import 'package:legend_design_core/state/legend_state.dart';
-import 'package:legend_design_template/config/colors.dart';
-import 'package:legend_design_template/config/layout.dart';
-import 'package:legend_design_template/config/sizing.dart';
-import 'package:legend_design_template/config/typography.dart';
 import 'package:legend_utils/urlstrategy/url_strategy.dart';
+import 'config/colors.dart';
+import 'config/layout.dart';
 import 'config/routes.dart';
+import 'config/sizing.dart';
+import 'config/typography.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

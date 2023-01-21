@@ -5,13 +5,13 @@ import 'package:legend_design_core/layout/menu_drawer/menu_drawer.dart';
 import 'package:legend_design_core/layout/scaffold/config/scaffold_config.dart';
 import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/router/scaffold_route_info.dart';
-import 'package:legend_design_template/content/modals/settings.dart';
-import 'package:legend_design_template/content/pages/screen1.dart';
-import 'package:legend_design_template/content/pages/screen2.dart';
-import 'package:legend_design_template/content/pages/screen3.dart';
-import 'package:legend_design_template/content/pages/screen4.dart';
-import 'package:legend_design_template/content/pages/screen5.dart';
 import 'package:legend_utils/extensions/maps.dart';
+import '../content/modals/settings.dart';
+import '../content/pages/screen1.dart';
+import '../content/pages/screen2.dart';
+import '../content/pages/screen3.dart';
+import '../content/pages/screen4.dart';
+import '../content/pages/screen5.dart';
 import 'layout.dart';
 
 class AppRoutes extends RoutesDelegate {

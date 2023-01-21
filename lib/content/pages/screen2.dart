@@ -3,10 +3,11 @@ import 'package:legend_design_core/layout/navigation/section/legend_section.dart
 import 'package:legend_design_core/layout/scaffold/routebody/legend_route_body.dart';
 import 'package:legend_design_core/state/legend_state.dart';
 import 'package:legend_design_core/styles/typography/widgets/legend_text.dart';
-import 'package:legend_design_template/content/widgets/color_container.dart';
 import 'package:legend_design_widgets/datadisplay/header/legend_header.dart';
 import 'package:legend_design_widgets/layout/dynamic/row/dynamic_row.dart';
 import 'package:legend_utils/legend_utils.dart';
+
+import '../widgets/color_container.dart';
 
 class Screen2 extends StatelessWidget {
   const Screen2({super.key});
