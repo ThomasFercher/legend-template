@@ -5,11 +5,12 @@ import 'package:legend_design_core/legend_design_core.dart';
 import 'package:legend_design_core/state/legend_state.dart';
 import 'package:legend_design_core/styles/typography/widgets/legend_text.dart';
 import 'package:legend_design_core/widgets/elevation/elevation_box.dart';
-import 'package:legend_design_template/content/widgets/icon_container.dart';
-import 'package:legend_design_template/content/widgets/spacing_container.dart';
 import 'package:legend_design_widgets/datadisplay/header/legend_header.dart';
 import 'package:legend_design_widgets/layout/dynamic/row/dynamic_row.dart';
 import 'package:legend_utils/legend_utils.dart';
+
+import '../widgets/icon_container.dart';
+import '../widgets/spacing_container.dart';
 
 class Screen3 extends StatelessWidget {
   const Screen3({Key? key}) : super(key: key);
