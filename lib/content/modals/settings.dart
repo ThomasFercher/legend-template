@@ -58,7 +58,7 @@ class _ThemeSelectorState extends State<ThemeSelector> {
         children: [
           LegendText(
             "Color Theme",
-            textStyle:
+            style:
                 theme.typography.h5.copyWith(color: theme.colors.foreground1),
             selectable: false,
           ),
@@ -67,7 +67,7 @@ class _ThemeSelectorState extends State<ThemeSelector> {
           ),
           AnimatedCard(
             borderRadius: theme.sizing.radius4.asRadius(),
-            background: colorTheme.themes[1].background1,
+            background: colorTheme.dark.background1,
             elevation: 1,
             onTap: () {
               context
@@ -81,8 +81,8 @@ class _ThemeSelectorState extends State<ThemeSelector> {
               height: width / 1.8,
               child: LegendText(
                 "Dark",
-                textStyle: theme.typography.h3.copyWith(
-                  color: colorTheme.themes[1].foreground1,
+                style: theme.typography.h3.copyWith(
+                  color: colorTheme.dark.foreground1,
                 ),
                 selectable: false,
               ),
@@ -93,7 +93,7 @@ class _ThemeSelectorState extends State<ThemeSelector> {
           ),
           AnimatedCard(
             borderRadius: theme.sizing.radius4.asRadius(),
-            background: colorTheme.themes.first.background1,
+            background: colorTheme.light.background1,
             elevation: 1,
             onTap: () {
               context
@@ -107,7 +107,7 @@ class _ThemeSelectorState extends State<ThemeSelector> {
               height: width / 1.8,
               child: LegendText(
                 "Light",
-                textStyle: theme.typography.h3,
+                style: theme.typography.h3,
                 selectable: false,
               ),
             ),

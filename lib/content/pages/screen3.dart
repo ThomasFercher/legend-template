@@ -18,13 +18,13 @@ class Screen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     LegendTheme theme = LegendTheme.of(context);
     return LegendRouteBody(
-      children: [
+      children: (_, s) => [
         LegendSection(
-          title: "Typography",
+          title: const LegendText("Typography"),
           child: LegendHeader(
             header: LegendText(
               "The Typographies range from h0 to h5. h5 should be the biggest and will normally be used for titles and headlines.",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -33,38 +33,38 @@ class Screen3 extends StatelessWidget {
               children: [
                 LegendText(
                   "Typography H5",
-                  textStyle: theme.typography.h5,
+                  style: theme.typography.h5,
                 ),
                 LegendText(
                   "Typography H4",
-                  textStyle: theme.typography.h4,
+                  style: theme.typography.h4,
                 ),
                 LegendText(
                   "Typography H3",
-                  textStyle: theme.typography.h3,
+                  style: theme.typography.h3,
                 ),
                 LegendText(
                   "Typography H2",
-                  textStyle: theme.typography.h2,
+                  style: theme.typography.h2,
                 ),
                 LegendText(
                   "Typography H1",
-                  textStyle: theme.typography.h1,
+                  style: theme.typography.h1,
                 ),
                 LegendText(
                   "Typography H0",
-                  textStyle: theme.typography.h0,
+                  style: theme.typography.h0,
                 ),
               ],
             ),
           ),
         ),
         LegendSection(
-          title: "Spacing",
+          title: const LegendText("Spacing"),
           child: LegendHeader(
             header: LegendText(
               "Spacing consists of four fields which get larger with increasing index. ",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -92,11 +92,11 @@ class Screen3 extends StatelessWidget {
           ),
         ),
         LegendSection(
-          title: "Icon Sizes",
+          title: const LegendText("Icon Sizes"),
           child: LegendHeader(
             header: LegendText(
               "Icon Sizes consists of four fields which get larger with increasing index. ",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -124,11 +124,11 @@ class Screen3 extends StatelessWidget {
           ),
         ),
         LegendSection(
-          title: "Elevation",
+          title: const LegendText("Elevation"),
           child: LegendHeader(
             header: LegendText(
               "Elevation consists of four fields which get larger with increasing index. ",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -148,7 +148,7 @@ class Screen3 extends StatelessWidget {
                     child: Center(
                       child: LegendText(
                         "Elevation 1",
-                        textStyle: theme.typography.h2,
+                        style: theme.typography.h2,
                       ),
                     ),
                   ),
@@ -166,7 +166,7 @@ class Screen3 extends StatelessWidget {
                     child: Center(
                       child: LegendText(
                         "Elevation 2",
-                        textStyle: theme.typography.h2,
+                        style: theme.typography.h2,
                       ),
                     ),
                   ),
@@ -184,7 +184,7 @@ class Screen3 extends StatelessWidget {
                     child: Center(
                       child: LegendText(
                         "Elevation 3",
-                        textStyle: theme.typography.h2,
+                        style: theme.typography.h2,
                       ),
                     ),
                   ),
@@ -202,7 +202,7 @@ class Screen3 extends StatelessWidget {
                     child: Center(
                       child: LegendText(
                         "Elevation 4",
-                        textStyle: theme.typography.h2,
+                        style: theme.typography.h2,
                       ),
                     ),
                   ),
@@ -212,11 +212,11 @@ class Screen3 extends StatelessWidget {
           ),
         ),
         LegendSection(
-          title: "Radius",
+          title: const LegendText("Radius"),
           child: LegendHeader(
             header: LegendText(
               "Radie consists of four fields which get larger with increasing index. ",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -231,7 +231,7 @@ class Screen3 extends StatelessWidget {
                   child: Center(
                     child: LegendText(
                       "Radius 1",
-                      textStyle: theme.typography.h2.copyWith(
+                      style: theme.typography.h2.copyWith(
                         color: theme.colors.foreground4,
                       ),
                     ),
@@ -247,7 +247,7 @@ class Screen3 extends StatelessWidget {
                   child: Center(
                     child: LegendText(
                       "Radius 2",
-                      textStyle: theme.typography.h2.copyWith(
+                      style: theme.typography.h2.copyWith(
                         color: theme.colors.foreground4,
                       ),
                     ),
@@ -263,7 +263,7 @@ class Screen3 extends StatelessWidget {
                   child: Center(
                     child: LegendText(
                       "Radius 3",
-                      textStyle: theme.typography.h2.copyWith(
+                      style: theme.typography.h2.copyWith(
                         color: theme.colors.foreground4,
                       ),
                     ),
@@ -279,7 +279,7 @@ class Screen3 extends StatelessWidget {
                   child: Center(
                     child: LegendText(
                       "Radius 4",
-                      textStyle: theme.typography.h2.copyWith(
+                      style: theme.typography.h2.copyWith(
                         color: theme.colors.foreground4,
                       ),
                     ),

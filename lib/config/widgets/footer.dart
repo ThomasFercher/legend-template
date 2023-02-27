@@ -12,7 +12,7 @@ class Footer extends StatelessWidget {
     return Center(
       child: LegendText(
         "Legend Design",
-        textStyle: theme.typography.h4.copyWith(
+        style: theme.typography.h4.copyWith(
           color: theme.footerColors.foreground,
         ),
       ),

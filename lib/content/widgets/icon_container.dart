@@ -29,7 +29,7 @@ class IconContainer extends LegendWidget {
         children: [
           LegendText(
             title,
-            textStyle: theme.typography.h1.copyWith(
+            style: theme.typography.h1.copyWith(
               color: theme.colors.foreground4,
             ),
           ),

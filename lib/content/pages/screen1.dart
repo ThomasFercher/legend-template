@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:legend_design_core/libraries/appbar.dart';
 import 'package:legend_design_core/libraries/scaffold.dart';
 import 'package:legend_design_core/state/legend_state.dart';
 import 'package:legend_design_widgets/input/text/paragraph/legendParagraph.dart';
@@ -12,13 +11,10 @@ class Screen1 extends StatelessWidget {
     return LegendRouteBody(
       builder: (context, s) {
         final theme = LegendTheme.of(context);
-        final headline =
-            ParagraphType(textStyle: theme.typography.h5, bottom: 12);
-        final subHeadline =
-            ParagraphType(textStyle: theme.typography.h4, bottom: 12);
-        final subSubHeadline =
-            ParagraphType(textStyle: theme.typography.h3, bottom: 12);
-        final text = ParagraphType(textStyle: theme.typography.h1, bottom: 24);
+        final headline = ParagraphType(theme.typography.h5, bottom: 12);
+        final subHeadline = ParagraphType(theme.typography.h4, bottom: 12);
+        final subSubHeadline = ParagraphType(theme.typography.h3, bottom: 12);
+        final text = ParagraphType(theme.typography.h1, bottom: 24);
         return Container(
           padding: EdgeInsets.all(theme.sizing.spacing2),
           decoration: BoxDecoration(

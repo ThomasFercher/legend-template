@@ -16,15 +16,15 @@ class Screen2 extends StatelessWidget {
     final theme = LegendTheme.of(context);
     return LegendRouteBody(
       disableContentDecoration: false,
-      children: [
+      children: (_, s) => [
         Builder(builder: (context) {
           final theme = LegendTheme.of(context);
           return LegendSection(
-            title: "Core",
+            title: const LegendText("Core"),
             child: LegendHeader(
               header: LegendText(
                 "The Core Colors represent the backbone of your Color Theme. These will be used throughout the whole application and used for SubThemes of Components.",
-                textStyle: theme.typography.h1,
+                style: theme.typography.h1,
               ),
               spacing: theme.sizing.spacing2,
               child: DynamicRow(
@@ -69,11 +69,11 @@ class Screen2 extends StatelessWidget {
           );
         }),
         LegendSection(
-          title: "Foreground",
+          title: const LegendText("Foreground"),
           child: LegendHeader(
             header: LegendText(
               "Foreground Colors are expected to be used for Typography and Content which faces the user. Also the Foreground 1 Color should contrast the matching Background 1 Color.",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
@@ -105,11 +105,11 @@ class Screen2 extends StatelessWidget {
           ),
         ),
         LegendSection(
-          title: "Background",
+          title: const LegendText("Background"),
           child: LegendHeader(
             header: LegendText(
               "Background Colors are expected to be used for Backgrounds and Content which is behind other Content. Also each Background Color should contrast the matching Foreground Color.",
-              textStyle: theme.typography.h1,
+              style: theme.typography.h1,
             ),
             spacing: theme.sizing.spacing2,
             child: DynamicRow(
