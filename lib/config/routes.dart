@@ -34,6 +34,7 @@ class AppRoutes extends RoutesDelegate {
         page: const Screen1(),
         title: "Home",
         icon: Icons.home,
+        isMenu: true,
       ),
       PageInfo(
         name: "/colors",
@@ -47,6 +48,7 @@ class AppRoutes extends RoutesDelegate {
         page: const Screen2(),
         title: "Colors",
         icon: Icons.color_lens,
+        isMenu: true,
       ),
       PageInfo(
         name: "/sizing",
@@ -60,6 +62,7 @@ class AppRoutes extends RoutesDelegate {
         page: const Screen3(),
         title: "Sizing",
         icon: Icons.layers,
+        isMenu: true,
       ),
       PageInfo(
         name: "/screen4",
@@ -69,6 +72,7 @@ class AppRoutes extends RoutesDelegate {
         ),
         page: const Screen4(),
         title: "Example",
+        isMenu: true,
         children: [
           PageInfo(
             name: "/screen4/test",
