@@ -46,7 +46,6 @@ class AppSizing implements SizingDelegate {
             h5: 32,
           ),
           footerSizing: FooterSizing(
-            height: 80,
             maxWidth: 1000,
             padding: const EdgeInsets.all(24),
           ),

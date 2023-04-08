@@ -4,7 +4,6 @@ import 'package:legend_design_core/layout/appBar.dart/appbar_layout.dart';
 import 'package:legend_design_core/layout/bottomBar.dart/bottom_bar_layout.dart';
 import 'package:legend_design_core/layout/config/dynamic_route_layout.dart';
 import 'package:legend_design_core/layout/config/route_layout.dart';
-import 'package:legend_design_core/layout/footer/fixed_footer.dart';
 import 'package:legend_design_core/layout/footer/footer_layout.dart';
 import 'package:legend_design_core/layout/menu_drawer/menu_drawer_layout.dart';
 import 'package:legend_design_core/layout/scaffold/config/scaffold_config.dart';
@@ -45,9 +44,7 @@ class AppLayout implements LayoutDelegate {
             },
           );
         },
-        customFooter: FixedFooter(
-          builder: ((context, sizing, colors) => const Footer()),
-        ),
+        customFooter: const Footer(),
         siderBuilder: (c, theme) {
           return Column(
             mainAxisSize: MainAxisSize.max,

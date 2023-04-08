@@ -11,36 +11,19 @@ class Screen4 extends LegendWidget {
   @override
   Widget build(BuildContext context, LegendTheme theme) {
     return LegendRouteBody(
-      slivers: (scroll) {
-        return [
-          SliverToBoxAdapter(
-            child: LegendText(
-              "Example Screen with Tabbar",
-              style: theme.typography.h2,
-            ),
-          ),
-          SliverFillRemaining(
-            child: Container(
-              color: Colors.green,
-            ),
-          ),
-          SliverFillRemaining(
-            child: Container(
-              color: Colors.red,
-              child: LegendButton(
-                onTap: () {
-                  scroll.animateTo(0.0,
-                      duration: Duration(
-                        seconds: 1,
-                      ),
-                      curve: Curves.bounceIn);
-                },
-                text: LegendText("Button"),
-                background: Colors.red,
+      singlePage: true,
+      builder: (context, s) {
+        return SizedBox(
+          height: s.height,
+          child: Column(
+            children: [
+              LegendText(
+                "Example Screen with Tabbar",
+                style: theme.typography.h2,
               ),
-            ),
+            ],
           ),
-        ];
+        );
       },
     );
   }
